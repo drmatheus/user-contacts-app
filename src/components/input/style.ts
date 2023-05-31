@@ -15,21 +15,22 @@ export const StyledInput = styled.div`
     margin-bottom: -4px;
   }
 
+  select,
   input {
     width: 100%;
     height: 32px;
     background-color: var(--primary-white);
     outline: none;
-    border-color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
     border-radius: var(--radius-main);
     padding-left: 6px;
   }
 
-  span {
+  & > span {
     text-align: right;
     margin-top: -8px;
     margin-bottom: -16px;
-    color: var(--primary-white);
+    color: var(--orange);
     font-size: 14px;
   }
 `;

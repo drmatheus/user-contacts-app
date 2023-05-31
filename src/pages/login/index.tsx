@@ -10,6 +10,7 @@ import { Form } from "../../components/form";
 import { api } from "../../services/API";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 export const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -28,9 +29,12 @@ export const Login = () => {
     const login = toast.loading("Loggin, await...", { autoClose: 3000 });
     try {
       setLoading(true);
-      const { data: token }: { data: string } = await api.post("login/", data);
+      const { data: token }: { data: { token: string } } = await api.post(
+        "login/",
+        data
+      );
 
-      console.log(token);
+      Cookies.set("userContact@token", `Baerer ${token.token}`, { expires: 7 });
 
       toast.update(login, {
         render: "Redirecting...",
@@ -40,7 +44,7 @@ export const Login = () => {
       });
       navigate("/home");
     } catch (e: any) {
-      console.log(e.response.data.message);
+      console.log(e);
       toast.update(login, {
         render: e.response.data.message,
         type: "error",
