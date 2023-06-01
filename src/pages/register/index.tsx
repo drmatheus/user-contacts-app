@@ -39,7 +39,6 @@ export const Register = () => {
     const register = toast.loading("Registring, await...", { autoClose: 3000 });
     try {
       setLoading(true);
-      console.log(data);
       await api.post("users/", data);
 
       toast.update(register, {
@@ -51,7 +50,6 @@ export const Register = () => {
       navigate("/login");
     } catch (e: any) {
       console.log(e);
-      console.log(e.response.data.message);
       toast.update(register, {
         render: e.response.data.message,
         type: "error",

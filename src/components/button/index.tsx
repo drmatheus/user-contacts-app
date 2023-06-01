@@ -4,11 +4,12 @@ interface IPropsButton {
   text: string;
   type: "submit" | "button" | "reset";
   disabled: boolean;
+  onClick?: () => void;
 }
 
-export const Button = ({ text, type, disabled }: IPropsButton) => {
+export const Button = ({ text, type, disabled, onClick }: IPropsButton) => {
   return (
-    <StyledButton type={type} disabled={disabled}>
+    <StyledButton type={type} disabled={disabled} onClick={onClick}>
       <span>{text}</span>
     </StyledButton>
   );
