@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { LoadingScreen } from "../../components/loading";
 import { Alert } from "../../components/alert";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Container, MainDiv } from "../../App";
 import { UserCard } from "../../components/userCard";
 import {
